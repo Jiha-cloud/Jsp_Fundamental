@@ -1,0 +1,46 @@
+<!--team_project-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Get Jquery</title>
+    <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+</head>
+<script>
+   
+
+    $(function(){
+            var address = encodeURIComponent('http://apis.data.go.kr/B552657/ErmctInfoInqireService/getEmrrmRltmUsefulSckbdInfoInqire?serviceKey=iAnMtFh%2B6mY3GEwsTL5x1C62MuzU9lAQj8Sm0C3BRBKkm9cQ9tFoV3LbZk1lgGFMEqnH3M5sowliBVezGw7HrQ%3D%3D&STATE1=서울특별시');
+            
+        $('#btn').click(function(){
+            $.ajax({
+                url : 'proxy.jsp?url='+address,
+                type : 'GET',
+                dataType : 'xml',
+                error : function(){
+                    alert('error');
+                },
+                success : function(xml){
+                        console.log(xml);
+                        
+                        $(xml).find("item").each(function(){
+                                //let name = $(this).find("dutyName").text();
+                                //var info = name +"<br/>";
+                                let tel = $(this).find("dutyTel3").text();
+                                var info = tel +"<br/>" + name;
+                                $('#sel').append(info);
+                        });
+                        
+                }
+            });       
+        });
+    });
+</script>
+<body>
+    <button id = "btn">가져오기</button>
+    <div id="sel">
+
+    </div>
+</body>
+</html>
