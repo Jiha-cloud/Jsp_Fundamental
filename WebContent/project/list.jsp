@@ -37,7 +37,7 @@
   	
   	<nav aria-label="breadcrumb">
 	 <ol class="breadcrumb" style="background-color: green">
-    <li class="breadcrumb-item"><a href="program.jsp" style="color:white">Back</a></li>
+    <li class="breadcrumb-item"><a href="program.jsp" style="color:white"> Back  </a></li>
     <li class="breadcrumb-item">Suggestion </li>
 	  </ol>
 	</nav>
@@ -51,6 +51,9 @@
 		h5{
 		font-family: 'Gaegu', cursive;
 		}		
+	.title{
+	color:black
+	}
 		</style>	
 	
   	
@@ -86,7 +89,7 @@
 				    <tr>
 				      <th scope="row"><%=dto.getNum() %></th>
 				      <td><%=dto.getWriter() %></td>
-				      <td><a href="view.jsp?num=<%=dto.getNum()%>&page=<%=cPage%>"><%=dto.getTitle() %></a></td>
+				      <td><a class="title" href="view.jsp?num=<%=dto.getNum()%>&page=<%=cPage%>"><%=dto.getTitle() %></a></td>
 				      <td><%=dto.getRegdate() %></td>
 				    </tr>
 				  <%	
