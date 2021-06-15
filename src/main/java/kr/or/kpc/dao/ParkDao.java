@@ -68,7 +68,7 @@ public class ParkDao {
 		try {
 			StringBuilder sql = new StringBuilder();
 			sql.append("select lan,len");
-			sql.append("from park ");
+			sql.append("from park2 ");
 			sql.append("WHERE paddr LIKE '%?%'");
 			
 			pstmt = con.prepareStatement(sql.toString());

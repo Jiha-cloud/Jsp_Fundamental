@@ -14,9 +14,9 @@ public class ConnLocator {
 		
 		try {
 			Context context = new InitialContext();
-			//jdbc/kpc -> context/xml ÂüÁ¶
+			//jdbc/kpc -> context/xml ï¿½ï¿½ï¿½ï¿½
 			ds = (DataSource) context.lookup("java:comp/env/jdbc/kpc");
-			//connectionPool¿¡ ¸¸µé¾îÁø connection °´Ã¼¸¦ ¹ÝÈ¯
+			//connectionPoolï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ connection ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½È¯
 			con = ds.getConnection();
 		}catch(NamingException e) {
 			System.err.println(e.getMessage());

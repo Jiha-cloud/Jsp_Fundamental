@@ -1,0 +1,79 @@
+<!--team_project-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Get Jquery</title>
+    <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+</head>
+<script>
+   
+
+    $(function(){
+            var address = encodeURIComponent('http://apis.data.go.kr/B552657/ErmctInfoInqireService/getEmrrmRltmUsefulSckbdInfoInqire?serviceKey=iAnMtFh%2B6mY3GEwsTL5x1C62MuzU9lAQj8Sm0C3BRBKkm9cQ9tFoV3LbZk1lgGFMEqnH3M5sowliBVezGw7HrQ%3D%3D&STATE1=서울특별시');
+            
+        $('#btn').click(function(){
+        	
+        	/* Javascript 샘플 코드 */
+
+
+        	//var xhr = new XMLHttpRequest();
+        	var url = 'http://apis.data.go.kr/1360000/WthrChartInfoService/getSurfaceChart'; /*URL*/
+        	var queryParams = '?' + encodeURIComponent('ServiceKey') + '='+encodeURIComponent('EQozl7Qnn/d+znIrsP6w6Rf4KGpib1JzpXATpgwbPc+O4ox/75P9aMmZNB51gq4zAiteg07dGEGhtc9n5UN92w=='); /*Service Key*/
+        	queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+        	queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /**/
+        	queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('JSON'); /**/
+        	queryParams += '&' + encodeURIComponent('code') + '=' + encodeURIComponent('24'); /**/
+        	queryParams += '&' + encodeURIComponent('time') + '=' + encodeURIComponent('20210611'); /**/
+        	/*
+        	xhr.open('GET', url + queryParams);
+        	xhr.onreadystatechange = function () {
+        	    if (this.readyState == 4) {
+        	        alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+        	    }
+        	};
+        	xhr.send('');
+			*/
+        	
+        	console.log(url + queryParams);
+            $.ajax({
+                url : 'proxy.jsp?url='+encodeURIComponent(url + queryParams),
+                type : 'GET',
+                dataType : 'json',
+                error : function(){
+                    alert('error');
+                },
+                success : function(json){
+                        /*
+                		console.log(xml);
+                        $('#sel').empty();
+                        $(xml).find("items").each(function(){
+                                //let name = $(this).find("dutyName").text();
+                                //var info = name +"<br/>";
+                                const man_file = $(this).find("man-file").text();
+                                $('#sel').append('<img src="'+man_file+'">');
+                        });
+                        */
+                        console.log(json);
+                        $('#sel').empty();
+                        const itemsArray = json.response.body.items.item;
+                        for(let item of itemsArray){
+                        	let file = item["man-file"].replace("[","");
+                        	file = file.replace("]","");
+                        	$('#sel').append('<img src="'+file+'">');
+                        }
+                        
+                }
+            });  
+        	
+        });
+	    });
+</script>
+<body>
+    <button id = "btn">가져오기</button>
+    <div id="sel">
+
+    </div>
+</body>
+</html>
