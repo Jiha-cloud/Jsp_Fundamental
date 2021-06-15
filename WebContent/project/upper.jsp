@@ -6,7 +6,7 @@
 	 <ol class="breadcrumb" style="background-color: green">
     <li class="breadcrumb-item"><a href="/project/program.jsp" style="color:white">Home</a></li>
      <li class="breadcrumb-item">Exercise</li>
-     <li class="breadcrumb-item">하체운동</li>
+     <li class="breadcrumb-item">상체운동</li>
 	  </ol>
 	</nav>
 	<!-- breadcrumb end -->
